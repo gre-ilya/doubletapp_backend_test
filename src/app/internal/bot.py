@@ -11,7 +11,11 @@ logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def start_bot():
-    """Add handlers to application and execute it, works only from manage.py shell"""
+    """Add handlers to application and execute it, works only from manage.py shell
+    >>from app.internal.bot import start_bot
+    >>start_bot()
+    Don't forget to set your token.
+    """
     application = ApplicationBuilder().token(TOKEN).build()
     application.add_handler(CommandHandler("start", handlers.start))
     application.add_handler(CommandHandler("set_phone", handlers.set_phone))
