@@ -20,6 +20,15 @@ command:
 shell:
 	python src/manage.py shell
 
+runserver:
+	python src/manage.py runserver
+
+runbot:
+	python src/manage.py runbot
+
+runall:
+	python src/manage.py runall
+
 debug:
 	python src/manage.py debug
 

@@ -1,9 +1,12 @@
 from django.contrib import admin
 
 from app.internal.admin.admin_user import AdminUserAdmin
-from app.internal.models.service_user import ServiceUser
+from app.internal import models
 
 admin.site.site_title = "Backend course"
 admin.site.site_header = "Backend course"
 
-admin.site.register(ServiceUser)
+"""Adding ORM objects to django admin panel"""
+admin.site.register(models.service_user.ServiceUser)
+admin.site.register(models.bank_account.BankAccount)
+admin.site.register(models.card.Card)

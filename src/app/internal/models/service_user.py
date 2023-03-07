@@ -4,6 +4,7 @@ from django.db import models
 class ServiceUser(models.Model):
     id = models.IntegerField(primary_key=True, auto_created=False)
     is_bot = models.BooleanField()
+    is_premium = models.BooleanField(null=True, default=False)
     username = models.CharField(null=True, max_length=32)
     first_name = models.CharField(null=True, max_length=64)
     last_name = models.CharField(null=True, max_length=64)
