@@ -1,11 +1,9 @@
 import logging
-import sys
+import os
 
-import telegram.error
 from telegram.ext import ApplicationBuilder, CommandHandler
 from app.internal.transport.bot import handlers
-
-TOKEN = "Your bot token here"
+from config.settings import BOT_TOKEN
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 
@@ -16,8 +14,11 @@ def start_bot():
     >>start_bot()
     Don't forget to set your token.
     """
-    application = ApplicationBuilder().token(TOKEN).build()
+    application = ApplicationBuilder().token(BOT_TOKEN).build()
     application.add_handler(CommandHandler("start", handlers.start))
     application.add_handler(CommandHandler("set_phone", handlers.set_phone))
     application.add_handler(CommandHandler("me", handlers.me))
+    application.add_handler(CommandHandler("card_balance", handlers.card_balance))
+    application.add_handler(CommandHandler("account_balance", handlers.account_balance))
+
     application.run_polling()
