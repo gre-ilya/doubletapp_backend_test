@@ -8,8 +8,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         from app.internal.bot import start_bot
+
         try:
             start_bot()
         except telegram.error.InvalidToken:
             self.stdout.write(self.style.ERROR("Error. Bot has a bad token..."))
-

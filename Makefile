@@ -12,7 +12,7 @@ collectstatic:
 	python src/manage.py collectstatic --no-input
 
 dev:
-	python src/manage.py runserver localhost:8000
+	python src/manage.py runall 0.0.0.0:8000
 
 command:
 	python src/manage.py ${c}
@@ -27,7 +27,16 @@ runbot:
 	python src/manage.py runbot
 
 runall:
-	python src/manage.py runall
+	python src/manage.py runall 
+
+dockerdev:
+	docker compose up -d
+
+dockerstop:
+	docker compose down
+
+dockerbuild:
+	docker compose build
 
 debug:
 	python src/manage.py debug
