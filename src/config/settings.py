@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': os.environ['PSQL_DATABASE'],
         'USER': os.environ['PSQL_USER'],
         'PASSWORD': os.environ['PSQL_PASS'],
-        'HOST': 'localhost',
+        'HOST': os.environ['PSQL_HOST'],
         'PORT': '',
     }
 }

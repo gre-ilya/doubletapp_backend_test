@@ -6,8 +6,14 @@ from django.core.management import call_command
 
 class Command(BaseCommand):
     help = "Runs the django server and telegram bot."
+    addrport = '127.0.0.1:8000'
 
     def add_arguments(self, parser):
+        parser.add_argument(
+            'addrport',
+            nargs='?',
+            help='Optional ipaddr:port'
+        )
         parser.add_argument(
             '--noreload',
             action='store_true',
@@ -19,7 +25,10 @@ class Command(BaseCommand):
         if os.environ.get('RUN_MAIN') == 'true':
             Process(target=call_command, daemon=True, args=('runbot', )).start()
 
+        if options['addrport']:
+            self.addrport = options['addrport']
+
         if options.get('noreload'):
-            call_command('runserver', noreload=True)
+            call_command('runserver', self.addrport, noreload=True)
         else:
-            call_command('runserver')
+            call_command('runserver', self.addrport, )
