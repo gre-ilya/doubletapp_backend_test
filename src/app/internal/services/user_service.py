@@ -1,7 +1,3 @@
-import json
-
-from django.http import HttpResponse
-
 from app.internal.models.service_user import ServiceUser
 
 
@@ -34,18 +30,3 @@ class UserService:
         except ServiceUser.DoesNotExist:
             return None
         return db_user_data
-
-
-class RestUserService:
-    @staticmethod
-    def me(user_id):
-        user_data = {}
-        try:
-            tmp = ServiceUser.objects.get(id=user_id)
-        except ServiceUser.DoesNotExist:
-            return HttpResponse(json.dumps({}))
-
-        for i in tmp:
-            user_data[i] = getattr(tmp, i)
-        response_json = json.dumps(user_data)
-        return HttpResponse(response_json)
