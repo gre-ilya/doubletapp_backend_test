@@ -20,9 +20,9 @@ def start_bot():
                                            handlers.open_bank_account_handler))
     application.add_handler(CommandHandler("issue_bank_card",
                                            handlers.issue_bank_card_handler))
-    application.add_handler(CommandHandler("account_balance",
+    application.add_handler(CommandHandler("account_info",
                                            handlers.account_info_handler))
-    application.add_handler(CommandHandler("card_balance",
+    application.add_handler(CommandHandler("card_info",
                                            handlers.card_info_handler))
 
     application.run_polling()
