@@ -13,12 +13,12 @@ class UserEntity(Entity):
     def create_from_telegram_data(cls, telegram_user_data):
         telegram_user_data = telegram_user_data.to_dict()
         self = UserEntity()
-        self.id = telegram_user_data['id']
-        self.username = telegram_user_data.get('username', None)
-        self.first_name = telegram_user_data.get('first_name', None)
-        self.last_name = telegram_user_data.get('last_name', None)
-        self.language_code = telegram_user_data.get('language_code', None)
-        self.phone_number = telegram_user_data.get('phone_number', None)
+        self.id = telegram_user_data["id"]
+        self.username = telegram_user_data.get("username", None)
+        self.first_name = telegram_user_data.get("first_name", None)
+        self.last_name = telegram_user_data.get("last_name", None)
+        self.language_code = telegram_user_data.get("language_code", None)
+        self.phone_number = telegram_user_data.get("phone_number", None)
         return self
 
     @classmethod

@@ -1,10 +1,12 @@
-from app.internal.services.user_service import UserService
-from app.internal.services.card_service import CardService
 from app.internal.services.bank_account_service import BankAccountService
+from app.internal.services.card_service import CardService
+from app.internal.services.user_service import UserService
 from app.internal.transport.user_entity import UserEntity
 
 
 class Checker:
+    """Class for checking the user's ability to use commands"""
+
     @staticmethod
     async def user_has_phone(user_entity):
         """This method checks if the database has user phone number."""
@@ -17,8 +19,7 @@ class Checker:
     @staticmethod
     async def user_has_bank_account(user_entity):
         """This method checks if user owns the bank account."""
-        db_account_data = \
-            await BankAccountService.get_bank_account(user_entity.id)
+        db_account_data = await BankAccountService.get_bank_account(user_entity.id)
         if db_account_data:
             return True
         return False

@@ -1,5 +1,6 @@
-import telegram.error
 from multiprocessing import Process
+
+import telegram.error
 from django.core.management.base import BaseCommand
 
 
