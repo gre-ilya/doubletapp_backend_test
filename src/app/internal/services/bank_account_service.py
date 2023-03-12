@@ -1,5 +1,5 @@
-from app.internal.services.user_service import UserService
 from app.internal.models.bank_account import BankAccount
+from app.internal.services.user_service import UserService
 
 
 class BankAccountService:
