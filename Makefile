@@ -1,12 +1,25 @@
+all: build run
+
+all-d: build run-d
+
+build:
+	docker compose build
+
+run:
+	docker compose up
+
+run-d:
+	docker compose up -d
+
 migrate:
 	python src/manage.py migrate $(if $m, api $m,)
 
 makemigrations:
 	python src/manage.py makemigrations
-	sudo chown -R ${USER} src/app/migrations/
+	sudo chown -R ${USER} app/migrations/
 
 createsuperuser:
-	python src/manage.py createsuperuser
+	python src/manage.py createsuperuser --no-input
 
 collectstatic:
 	python src/manage.py collectstatic --no-input
@@ -28,15 +41,6 @@ runbot:
 
 runall:
 	python src/manage.py runall 
-
-dockerdev:
-	docker compose up -d
-
-dockerstop:
-	docker compose down
-
-dockerbuild:
-	docker compose build
 
 debug:
 	python src/manage.py debug
