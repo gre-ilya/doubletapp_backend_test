@@ -7,8 +7,8 @@ from app.internal.services.bank_account_service import BankAccountService
 from app.internal.services.card_service import CardService
 from app.internal.services.user_service import UserService
 from app.internal.transport.bank_account_entity import BankAccountEntity
-from app.internal.transport.checker import Checker
 from app.internal.transport.card_entity import CardEntity
+from app.internal.transport.checker import Checker
 from app.internal.transport.user_entity import UserEntity
 
 NO_PHONE_RESPONSE = "You have to set your phone number with /set_phone " "before using this command."
