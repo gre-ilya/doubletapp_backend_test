@@ -5,43 +5,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-    dependencies = [
-        ("app", "0006_bankaccount_balance_card_balance"),
-    ]
+    dependencies = [("app", "0006_bankaccount_balance_card_balance")]
 
     operations = [
-        migrations.RemoveField(
-            model_name="bankaccount",
-            name="corr_account",
-        ),
-        migrations.RemoveField(
-            model_name="bankaccount",
-            name="inn",
-        ),
-        migrations.RemoveField(
-            model_name="bankaccount",
-            name="kpp",
-        ),
-        migrations.RemoveField(
-            model_name="bankaccount",
-            name="rcbic",
-        ),
-        migrations.RemoveField(
-            model_name="card",
-            name="account_number",
-        ),
-        migrations.RemoveField(
-            model_name="card",
-            name="balance",
-        ),
-        migrations.RemoveField(
-            model_name="serviceuser",
-            name="is_bot",
-        ),
-        migrations.RemoveField(
-            model_name="serviceuser",
-            name="is_premium",
-        ),
+        migrations.RemoveField(model_name="bankaccount", name="corr_account"),
+        migrations.RemoveField(model_name="bankaccount", name="inn"),
+        migrations.RemoveField(model_name="bankaccount", name="kpp"),
+        migrations.RemoveField(model_name="bankaccount", name="rcbic"),
+        migrations.RemoveField(model_name="card", name="account_number"),
+        migrations.RemoveField(model_name="card", name="balance"),
+        migrations.RemoveField(model_name="serviceuser", name="is_bot"),
+        migrations.RemoveField(model_name="serviceuser", name="is_premium"),
         migrations.AddField(
             model_name="bankaccount",
             name="user",

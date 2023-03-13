@@ -27,7 +27,7 @@ BOT_TOKEN = os.environ["BOT_TOKEN"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ['DJANGO_ALLOWED_HOSTS'].split()
+ALLOWED_HOSTS = os.environ["DJANGO_ALLOWED_HOSTS"].split()
 
 
 # Application definition
