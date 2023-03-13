@@ -4,7 +4,6 @@ media/
 local_settings.py
 __pycache__
 *.pyc
-.env*
+.env
 .idea
-dbdata/*
 .bash_history

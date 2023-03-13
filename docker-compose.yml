@@ -1,20 +1,32 @@
 version: "3.8"
 services:
-  app:
-    build: ./src
-    command: python manage.py runall 0.0.0.0:8000 
+  postgres:
+    image: "postgres:12.14-alpine"
+    hostname: "${POSTGRES_HOST}"
     volumes:
-      - ./src:/home/appuser/
-    ports:
-      - ${SERVER_PORT}:8000
-    env_file:
-      - ./.env
-  db:
-    image: postgres:12.14-alpine
-    volumes:
-      - postgres_volume:/var/lib/postgresql/data
+      - "postgres_volume:/var/lib/postgresql/data"
     env_file: 
-      - ./.env
+      - "./.env"
+
+  app-server:
+    build: "./src"
+    depends_on:
+      - "postgres"
+    command: -c "/wait && make"
+    environment:
+      WAIT_HOSTS: "${POSTGRES_HOST}:5432"
+    env_file:
+      - "./.env"
+    ports:
+      - "${SERVER_PORT}:8000"
+
+  app-bot:
+    build: "./src"
+    depends_on:
+      - "app-server"
+    command: -c "make runbot"
+    env_file:
+      - "./.env"
 
 volumes:
   postgres_volume:
