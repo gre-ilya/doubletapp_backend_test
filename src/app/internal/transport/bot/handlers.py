@@ -7,7 +7,7 @@ from app.internal.services.bank_account_service import BankAccountService
 from app.internal.services.card_service import CardService
 from app.internal.services.user_service import UserService
 from app.internal.transport.bank_account_entity import BankAccountEntity
-from app.internal.transport.bot.checker import Checker
+from app.internal.transport.checker import Checker
 from app.internal.transport.card_entity import CardEntity
 from app.internal.transport.user_entity import UserEntity
 
@@ -68,7 +68,7 @@ async def set_phone_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_entity.phone_number = phone_number
     await UserService.save_user(user_entity)
     # Response to user
-    text_back = "Saved, now you able to use /me command."
+    text_back = "Saved, now you able to use all commands."
     await context.bot.send_message(chat_id=update.effective_chat.id, text=text_back)
 
 
