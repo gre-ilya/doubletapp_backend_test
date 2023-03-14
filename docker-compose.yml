@@ -9,7 +9,7 @@ services:
       - "./.env"
 
   app-server:
-    build: "${IMAGE_NAME}"
+    build: "${CI_REGISTRY}/ilya.grubenuk/ci-cd/ci-cd:${CI_ENVIRONMENT_SLUG}-${CI_COMMIT_SHA}"
     depends_on:
       - "postgres"
     command: -c "/wait && make"
@@ -21,7 +21,7 @@ services:
       - "${SERVER_PORT}:8000"
 
   app-bot:
-    build: "${IMAGE_NAME}"
+    build: "${CI_REGISTRY}/ilya.grubenuk/ci-cd/ci-cd:${CI_ENVIRONMENT_SLUG}-${CI_COMMIT_SHA}"
     depends_on:
       - "app-server"
     command: -c "make runbot"
