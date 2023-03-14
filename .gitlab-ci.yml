@@ -13,7 +13,6 @@ before_script:
 build:
   stage: build
   script:
-    - echo "$IMAGE_NAME"
     - make build push
   tags:
     - job:build
