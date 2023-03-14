@@ -1,10 +1,9 @@
 import logging
 import os
 
-from telegram.ext import ApplicationBuilder, CommandHandler
-
 from app.internal.transport.bot import handlers
 from config.settings import BOT_TOKEN
+from telegram.ext import ApplicationBuilder, CommandHandler
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - " "%(message)s", level=logging.INFO)
 

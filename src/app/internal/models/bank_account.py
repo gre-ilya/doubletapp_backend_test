@@ -1,6 +1,5 @@
-from django.db import models
-
 from app.internal.models.service_user import ServiceUser
+from django.db import models
 
 
 class BankAccount(models.Model):

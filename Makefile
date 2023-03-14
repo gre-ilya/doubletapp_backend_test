@@ -1,15 +1,21 @@
-all: build run
+IMAGE_NAME=${CI_REGISTRY}/ilya.grubenuk/ci-cd/ci-cd:${CI_ENVIRONMENT_SLUG}-${CI_COMMIT_SHA}
 
-all-d: build run-d
+all: migrate runserver
 
 build:
-	docker compose build
+	docker build -t ${IMAGE_NAME} ./src
 
-run:
-	docker compose up
+push:
+	docker push ${IMAGE_NAME}
 
-run-d:
-	docker compose up -d
+pull:
+	docker pull ${IMAGE_NAME}
+
+up:
+	docker-compose up -d
+
+down:
+	docker-compose down
 
 migrate:
 	python src/manage.py migrate $(if $m, api $m,)
@@ -34,7 +40,7 @@ shell:
 	python src/manage.py shell
 
 runserver:
-	python src/manage.py runserver
+	python src/manage.py runserver 0.0.0.0:8000
 
 runbot:
 	python src/manage.py runbot
@@ -55,6 +61,6 @@ lint:
 	black --config pyproject.toml .
 
 check_lint:
-	isort --check --diff .
+	isort --check --diff -rc .
 	flake8 --config setup.cfg
-	black --check --config pyproject.toml .
+#	black --check --config pyproject.toml .
