@@ -24,6 +24,9 @@ build:
 lint:
   stage: lint
   script:
+    - apk add lint
+    - apk add flake8
+    - apk add black
     - make lint
   tags:
     - job:lint
