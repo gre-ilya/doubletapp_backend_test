@@ -39,7 +39,7 @@ lint:
 deploy:
   stage: deploy
   script:
-    - make pull down migrate up
+    - make pull down up
   tags:
     - job:deploy.prod/1
   only:
