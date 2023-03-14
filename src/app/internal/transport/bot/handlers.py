@@ -1,8 +1,5 @@
 import logging
 
-from telegram import Update
-from telegram.ext import ContextTypes
-
 from app.internal.services.bank_account_service import BankAccountService
 from app.internal.services.card_service import CardService
 from app.internal.services.user_service import UserService
@@ -10,6 +7,8 @@ from app.internal.transport.bank_account_entity import BankAccountEntity
 from app.internal.transport.card_entity import CardEntity
 from app.internal.transport.checker import Checker
 from app.internal.transport.user_entity import UserEntity
+from telegram import Update
+from telegram.ext import ContextTypes
 
 NO_PHONE_RESPONSE = "You have to set your phone number with /set_phone " "before using this command."
 NO_BANK_ACCOUNT_RESPONSE = "You have to create your bank account with " "/open_bank_account before using this command."

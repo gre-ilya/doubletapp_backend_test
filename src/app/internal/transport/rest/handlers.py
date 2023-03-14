@@ -1,10 +1,9 @@
 import json
 
-from django.http import HttpResponse
-
 from app.internal.services.user_service import UserService
 from app.internal.transport.checker import Checker
 from app.internal.transport.user_entity import UserEntity
+from django.http import HttpResponse
 
 
 async def me(request, user_id):

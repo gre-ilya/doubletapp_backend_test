@@ -1,6 +1,5 @@
-from django.db import models
-
 from app.internal.models.bank_account import BankAccount
+from django.db import models
 
 
 class Card(models.Model):
