@@ -1,15 +1,19 @@
-all: build run
-
-all-d: build run-d
+all: migrate runserver
 
 build:
-	docker compose build
+	docker build -t ${IMAGE_NAME} ./src
 
-run:
-	docker compose up
+push:
+	docker push ${IMAGE_NAME}
 
-run-d:
+pull:
+	docker pull ${IMAGE_NAME}
+
+up:
 	docker compose up -d
+
+down:
+	docker compose down
 
 migrate:
 	python src/manage.py migrate $(if $m, api $m,)
@@ -34,7 +38,7 @@ shell:
 	python src/manage.py shell
 
 runserver:
-	python src/manage.py runserver
+	python src/manage.py runserver 0.0.0.0:8000
 
 runbot:
 	python src/manage.py runbot

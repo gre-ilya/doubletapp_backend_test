@@ -9,7 +9,7 @@ services:
       - "./.env"
 
   app-server:
-    build: "./src"
+    build: "${IMAGE_NAME}"
     depends_on:
       - "postgres"
     command: -c "/wait && make"
@@ -21,7 +21,7 @@ services:
       - "${SERVER_PORT}:8000"
 
   app-bot:
-    build: "./src"
+    build: "${IMAGE_NAME}"
     depends_on:
       - "app-server"
     command: -c "make runbot"
