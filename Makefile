@@ -12,10 +12,10 @@ pull:
 	docker pull ${IMAGE_NAME}
 
 up:
-	docker compose up -d
+	docker-compose up -d
 
 down:
-	docker compose down
+	docker-compose down
 
 migrate:
 	python src/manage.py migrate $(if $m, api $m,)
