@@ -1,4 +1,4 @@
-IMAGE_NAME=$CI_REGISTRY/ilya.grubenuk/ci-cd/ci-cd:$CI_ENVIRONMENT_SLUG-$CI_COMMIT_SHA
+IMAGE_NAME=${CI_REGISTRY}/ilya.grubenuk/ci-cd/ci-cd:${CI_ENVIRONMENT_SLUG}-${CI_COMMIT_SHA}
 
 all: migrate runserver
 
